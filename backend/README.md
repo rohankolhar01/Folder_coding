@@ -1,3 +1,3 @@
-# Backend
+# Flask Backend Structure
 
-This is the Flask backend for the project.
+This folder contains the backend code for the Flask application.
