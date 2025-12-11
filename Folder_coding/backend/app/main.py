@@ -1,10 +1,7 @@
 from fastapi import FastAPI
-from .api import cart
 
-app = FastAPI(title='Shopping Cart Service', version='1.0.0')
+app = FastAPI()
 
-app.include_router(cart.router)
-
-@app.get('/')
-def root():
-    return {'message': 'Shopping Cart API running'}
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the shopping cart API"}
