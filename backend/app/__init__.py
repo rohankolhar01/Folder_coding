@@ -1,9 +1,20 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
-def create_app():
+db = SQLAlchemy()
+jwt = JWTManager()
+
+def create_app(config_name='development'):
     app = Flask(__name__)
+    app.config.from_object(f'config.{config_name.capitalize()}Config')
 
-    from .routes import register_routes
-    register_routes(app)
+    CORS(app)
+    db.init_app(app)
+    jwt.init_app(app)
+
+    from app.routes import register_blueprints
+    register_blueprints(app)
 
     return app
