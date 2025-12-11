@@ -1,2 +1,6 @@
-def format_response(data, message="Success"):
-    return {"message": message, "data": data}
+def format_response(data=None, message='', success=True):
+    return {
+        'success': success,
+        'message': message,
+        'data': data or {}
+    }
